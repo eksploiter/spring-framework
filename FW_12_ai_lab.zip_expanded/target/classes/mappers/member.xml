@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.live.model.dao.MemberDao">
+    <insert id="insert" useGeneratedKeys="true" keyProperty="mno">
+        insert into member (name, email, password)
+        values(#{name}, #{email}, #{password})
+    </insert>
+
+    <update id="update">
+        update member set
+        name=#{name}, password=#{password}, role = #{role} where email=#{email}
+    </update>
+
+    <delete id="delete">
+        delete from member where mno=#{mno}
+    </delete>
+
+    <update id="updateProfile">
+        update member set profile=#{profile} where email=#{email}
+    </update>
+
+    <select id="select" resultType="Member">
+        select * from member where email=#{email}
+    </select>
+
+    <select id="searchAll" resultMap="memberMap">
+        select * from member order by mno desc
+    </select>
+
+    <resultMap type="Member" id="memberMap">
+        <id column="mno" property="mno" />
+        <result column="name" property="name" />
+        <result column="email" property="email" />
+        <result column="password" property="password" />
+        <result column="role" property="role" />
+        <result column="profile" property="profile" />
+    </resultMap>
+
+    <select id="selectDetail" resultMap="memberAddressMap">
+        select m.*, a.*
+        from member m left join address a using(mno)
+        where email=#{email}
+    </select>
+
+    <resultMap type="Member" id="memberAddressMap" extends="memberMap">
+        <collection property="addresses" column="mno" ofType="Address"
+            resultMap="com.ssafy.live.model.dao.AddressDao.addressMap" notNullColumn="ano"></collection>
+    </resultMap>
+
+    <select id="getTotalCount">
+        select count(mno) from member
+        <include refid="pagingWhere"></include>
+    </select>
+
+    <sql id="pagingWhere">
+        <where>
+            <if test="key !=null and word !=null">
+                ${key} like concat('%', #{word}, '%')
+            </if>
+        </where>
+    </sql>
+
+    <select id="search">
+        select * from member
+        <include refid="pagingWhere"></include>
+        order by mno desc limit #{offset}, #{itemsPerPage}
+    </select>
+</mapper>

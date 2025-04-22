@@ -1,0 +1,41 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+    <%@ include file="/WEB-INF/views/fragments/header.jsp"%>
+    <div class="container">
+        <h1>login</h1>
+        <form action="${root }/member/login" method="post" class="m-3">
+
+            <div class="mb-3 row">
+                <label for="email" class="col-sm-2 col-form-label">이메일</label>
+                <div class="col-sm-10">
+                    <!-- TODO: 07-5. 쿠키값 활용 부분의 변경 내용을 확인하세요. -->
+                    <input type="email" id="email" name="email" placeholder="email 입력" class="form-control" required
+                        value="${cookie.loginId.value}" />
+                </div>
+            </div>
+
+            <div class="mb-3 row">
+                <label for="password" class="col-sm-2 col-form-label">비밀번호</label>
+                <div class="col-sm-10">
+                    <input type="password" name="password" id="password" class="form-control" required value="1234" />
+                </div>
+            </div>
+            <div class="d-flex justify-content-end align-items-center">
+                <div class="form-check">
+                    <input type="checkbox" value="on" name="remember-me" id="remember-me" class="form-check-input"
+                        ${cookie['remember-me']!=null?"checked":"" } />
+                    <label for="remember-me" class="form-check-label">로그인 유지</label>
+                </div>
+                <button type="submit" class="btn btn-primary ms-3">로그인</button>
+            </div>
+        </form>
+    </div>
+    <%@ include file="/WEB-INF/views/fragments/footer.jsp"%>
+</body>
+</html>

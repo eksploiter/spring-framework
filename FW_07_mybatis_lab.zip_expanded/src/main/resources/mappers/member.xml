@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.live.model.dao.MemberDao">
+    <!-- TODO: 03-1. MemberDao에 대한 insert를 작성해보세요. -->
+
+    <!-- END -->
+
+    <!-- TODO: 04-1. update, delete, updateProfile에 대한 코드를 확인하세요. -->
+    <update id="update">
+        update member set
+        name=#{name}, password=#{password}, role = #{role} 
+        where email=#{email}
+    </update>
+
+    <delete id="delete">
+        delete from member 
+        where mno=#{mno}
+    </delete>
+
+    <update id="updateProfile">
+        update member 
+        set profile=#{profile} 
+        where email=#{email}
+    </update>
+
+    <!-- TODO: 06-1. select에 대한 코드를 확인하세요. -->
+    <select id="select" resultType="Member">
+        select * from member where email=#{email}
+    </select>
+
+    <!-- TODO: 07-1. Member에 대한 기본 resultMap을 만들고 이를 이용해서 search 메서드를 처리하세요. -->
+
+    <!-- END -->
+
+    <!-- TODO: 09-1. selectDetail을 처리해보세요. -->
+
+    <!-- END -->
+
+    <!-- TODO: 15-1. getTotalCount와 search를 처리해보세요. -->
+
+    <!-- END -->
+</mapper>

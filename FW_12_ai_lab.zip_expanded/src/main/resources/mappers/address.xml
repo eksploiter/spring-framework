@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.live.model.dao.AddressDao">
+    <insert id="insert" useGeneratedKeys="true" keyProperty="ano">
+        insert into address (mno, title, address, detail_address, x, y) values
+        (#{mno},#{title},#{address},#{detailAddress},#{x},#{y})
+    </insert>
+
+    <delete id="delete">
+        delete from address where ano=#{ano}
+    </delete>
+
+    <delete id="deleteByMno">
+        delete from address where mno=#{mno}
+    </delete>
+
+    <select id="select" resultMap="addressMap">
+        <!-- select * from address where ano=#{ano} -->
+        select ano, mno, title, address, detail_address, x, y from address where ano=#{ano}
+    </select>
+
+    <select id="selectDetail" resultMap="addressMemberMap">
+        select a.*, m.*
+        from address a join member m using(mno)
+        where ano=#{ano}
+    </select>
+
+    <select id="queryStructureChange" resultMap="addressMap">
+        select * from address where ${key}=#{word}
+    </select>
+
+    <select id="dynamicSelect" resultMap="addressMap">
+        select * from address
+        <trim prefix="where" prefixOverrides="or |and">
+            <if test="title!=null"> and title = #{title} </if>
+            <if test="mno!=null"> and mno=#{mno} </if>
+        </trim>
+
+    </select>
+    
+    <select id="selectUseIn" resultMap="addressMap">
+        select * from address
+        <where>
+            <foreach collection="titles" item="title" open="title in (" separator="," close=")">
+                #{title}
+            </foreach>
+        </where>
+    </select>
+
+
+    <update id="dynamicUpdate" >
+        update address
+        <trim prefix="set" suffixOverrides=",">
+            <if test="mno !=null">mno=#{mno},</if>
+            <if test="title !=null">title=#{title},</if>
+            <if test="address !=null">address=#{address},</if>
+            <if test="detailAddress !=null">detail_address=#{detailAddress},</if>
+            <if test="x !=null">x=#{x},</if>
+            <if test="y !=null">y=#{y},</if>
+        </trim>
+        where ano=#{ano}
+    </update>
+    
+    <select id="carefulQuery">
+        select * from address 
+        where mno &lt; #{mno} and address like concat('%', #{addr}, '%')
+    </select>
+
+    <resultMap type="Address" id="addressMap">
+        <id column="ano" property="ano" />
+        <result column="mno" property="mno" />
+        <result column="title" property="title" />
+        <result column="address" property="address" />
+        <result column="detail_address" property="detailAddress" />
+        <result column="x" property="x" />
+        <result column="y" property="y" />
+    </resultMap>
+
+    <resultMap type="Address" id="addressMemberMap" extends="addressMap">
+        <association property="member" column="mno" resultMap="com.ssafy.live.model.dao.MemberDao.memberMap"></association>
+    </resultMap>
+</mapper>

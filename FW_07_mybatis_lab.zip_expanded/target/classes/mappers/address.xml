@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- TODO: 05-1. AddressDao에 대한 mapper(insert, delete, deleteByMno)를 구성해보세요. -->
+ <mapper> 
+    <!--  insert 메서드를 처리하세요. -->
+    <!--  delete 메서드를 처리하세요. -->
+    <!--  deleteByMno 메서드를 처리하세요. -->
+    <!--  TODO: 06-3. select 메서드를 처리하세요. -->
+    <!--  TODO: 08-1. selecDetail 메서드를 처리하세요. -->
+    <!--  TODO: 10-1. queryStructureChange 메서드를 처리하세요. -->
+    <!--  TODO: 11-1. dynamicSelect 메서드를 처리하세요. -->
+    <!--  TODO: 12-1. selectUseIn 메서드를 처리하세요. -->
+    <!--  TODO: 13-1. dynamicUpdate 메서드를 처리하세요. -->
+    <!--  TODO: 14-1. carefulQuery 메서드를 처리하세요. -->
+    <!--  TODO: 06-5. Address에 대한 기본 resultMap을 살펴보자. -->
+    <resultMap type="Address" id="addressMap">
+        <id column="ano" property="ano" />
+        <result column="mno" property="mno" />
+        <result column="title" property="title" />
+        <result column="address" property="address" />
+        <result column="detail_address" property="detailAddress" />
+        <result column="x" property="x" />
+        <result column="y" property="y" />
+    </resultMap>
+
+    <resultMap type="Address" id="addressMemberMap" extends="addressMap">
+        <association property="member" column="mno" resultMap="com.ssafy.live.model.dao.MemberDao.memberMap"></association>
+    </resultMap>
+
+    <!-- END -->
+</mapper>
