@@ -36,6 +36,12 @@ public class ProductDTO {
 	private List<GiftProductDTO> gifts;
 	
 	@Builder
+	public ProductDTO(int productId, String name, String category, String brand, int price, int stockQuantity) {
+		this(name, category, brand, price, stockQuantity);
+		this.productId = productId;
+	}
+	
+	@Builder
 	public ProductDTO(String name, String category, String brand, int price, int stockQuantity) {
 		super();
 		this.name = name;
@@ -45,10 +51,11 @@ public class ProductDTO {
 		this.stockQuantity = stockQuantity;
 	}
 	
-	public ProductDTO(int productId, String name, String category, String brand, int price, int stockQuantity) {
-		this(name, category, brand, price, stockQuantity);
-		this.productId = productId;
-	}
+//	@Builder
+//	public ProductDTO(int productId, String name, String category, String brand, int price, int stockQuantity) {
+//		this(name, category, brand, price, stockQuantity);
+//		this.productId = productId;
+//	}
 
 
 }
