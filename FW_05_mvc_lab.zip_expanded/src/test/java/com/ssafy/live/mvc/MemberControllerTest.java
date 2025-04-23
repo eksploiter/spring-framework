@@ -25,7 +25,7 @@ import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-
+import com.ssafy.live.controller.MemberController;
 import com.ssafy.live.exception.RecordNotFoundException;
 import com.ssafy.live.model.dto.Member;
 import com.ssafy.live.model.service.BasicMemberService;
@@ -33,7 +33,7 @@ import com.ssafy.live.model.service.BasicMemberService;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
- //@WebMvcTest(controllers = MemberController.class)
+@WebMvcTest(controllers = MemberController.class)
 public class MemberControllerTest {
 
     @Autowired
