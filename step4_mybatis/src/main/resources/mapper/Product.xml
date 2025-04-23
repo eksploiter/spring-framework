@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- sql mapping -->
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.ssafy.shopApp.model.dao.IProductDAO">
+	<delete id="deleteProduct">
+		DELETE FROM products WHERE product_id = #{productId}
+	</delete>
+	
+	<update id="updateProduct">
+		UPDATE products SET name=#{name}, category=#{category}, 
+							brand=#{brand}, price=#{price}, stock_quantity=#{stockQuantity} 
+							WHERE product_id=#{productId}
+	</update>
+	
+	<sql id="basicProductSQL">
+		SELECT product_id as productId, name, category, brand, price, stock_quantity as stockQuantity
+		FROM products 
+	</sql>
+	
+	<select id="getProductById" parameterType="int" resultType="ProductDTO">
+		<include refid="basicProductSQL"></include>
+		WHERE product_id = #{productId}
+	</select>
+	
+	<select id="getAllProducts" resultType="ProductDTO">
+		<include refid="basicProductSQL"></include>
+	</select>
+	
+	<insert id="insertProduct">
+		INSERT INTO products (name, category, brand, price, stock_quantity) 
+		VALUES (#{name}, #{category}, #{brand}, #{price}, #{stockQuantity})
+	</insert>
+	
+	<insert id="insertGiftProduct">
+		INSERT INTO gift_products (name, product_id) 
+		VALUES (#{name}, #{productId})
+	</insert>
+	
+</mapper>
+
+<!-- DTD: document type definition -->

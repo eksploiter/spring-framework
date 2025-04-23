@@ -1,12 +1,16 @@
 INDEX VERSION 1.134
-C:\SSAFY\spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3931767646.index
-\step3_mvc\src\main\java
+C:\SSAFY\spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\326516179.index
+\FW_05_mvc_lab.zip_expanded\src\main\java
+C:\SSAFY\spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2670403868.index
+\step4_mybatis\src\main\java
 C:\SSAFY\spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\383169877.index
 \step3_mvc\src\main\java
 C:\SSAFY\spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2402325169.index
 \FW_04_aop_lab.zip_expanded\src\main\java
 C:\SSAFY\spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1426515664.index
 \FW_05_mvc_lab.zip_expanded\src\main\java
+C:\SSAFY\spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3044741216.index
+\step4_mybatis\src\main\java
 C:\SSAFY\spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2975970397.index
 \BE_Proj_Final_lab.zip_expanded\src\main\java
 C:\SSAFY\spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1120938643.index
@@ -35,6 +39,8 @@ C:\SSAFY\spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3361971633
 \step3_mvc-1\src\main\java
 C:\SSAFY\spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4214296841.index
 \FW_05_mvc_lab.zip_expanded\src\main\java
+C:\SSAFY\spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\33139783.index
+\step4_mybatis\src\main\java
 C:\SSAFY\spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3156864096.index
 \step3_mvc-1\src\main\java
 C:\SSAFY\spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2706727822.index
@@ -43,5 +49,5 @@ C:\SSAFY\spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3110683084
 \step3_mvc\src\main\java
 C:\SSAFY\spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1978300408.index
 \FW_04_aop_lab.zip_expanded\src\main\java
-C:\SSAFY\spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\326516179.index
-\FW_05_mvc_lab.zip_expanded\src\main\java
+C:\SSAFY\spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3931767646.index
+\step3_mvc\src\main\java
