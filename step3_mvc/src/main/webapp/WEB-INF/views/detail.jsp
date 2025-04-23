@@ -57,9 +57,9 @@
 				<tfoot>
 					<tr>
 						<td colspan="2"><input type="submit" value="수정"
-							formaction="${root}/product/modify" /> <input type="submit"
-							value="삭제" formaction="${root}/product/delete" /> <input
-							type="reset" value="취소" /></td>
+							formaction="${root}/product/modify" /> 
+							<input type="submit" value="삭제" formaction="${root}/product/delete" /> 
+							<input type="reset" value="취소" /></td>
 					</tr>
 				</tfoot>
 			</table>

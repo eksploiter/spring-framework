@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<jsp:include page="/common/menu.jsp"/>
+	<jsp:include page="/WEB-INF/views/common/menu.jsp"/>
 	<div class="container">
 		<h3>처리 중 문제가 발생하였습니다</h3>
 		<h4>${errorMsg}</h4>

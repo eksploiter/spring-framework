@@ -42,8 +42,8 @@ public class UserController {
 		return "redirect:/main?action=home";
 	}
 
-	@GetMapping("/loginForm")
-	String loginForm() {
-		return "user/login";
-	}
+//	@GetMapping("/loginForm")
+//	String loginForm() {
+//		return "user/login";
+//	}
 }

@@ -21,8 +21,8 @@ import lombok.ToString;
 //@Component
 
 @Data
-@AllArgsConstructor
 @Builder
+@NoArgsConstructor
 public class ProductDTO {
 	private int productId;
 	private String name;
@@ -30,10 +30,6 @@ public class ProductDTO {
 	private String brand;
 	private int price;
 	private int stockQuantity;
-	@ToString.Exclude
-	@EqualsAndHashCode.Exclude
-	@Builder.Default
-	private List<GiftProductDTO> gifts;
 	
 	@Builder
 	public ProductDTO(int productId, String name, String category, String brand, int price, int stockQuantity) {

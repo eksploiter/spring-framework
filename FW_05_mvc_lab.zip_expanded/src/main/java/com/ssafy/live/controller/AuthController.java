@@ -1,8 +1,19 @@
 package com.ssafy.live.controller;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
+
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ssafy.live.model.dto.Address;
 import com.ssafy.live.model.dto.Member;
@@ -12,79 +23,86 @@ import com.ssafy.live.model.service.AddressService;
 import com.ssafy.live.model.service.MemberService;
 
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 
 // TODO: 10-6. @Controller로 변경하고 service의 case에 해당하는 handler 메서드를 작성하세요.
-@WebServlet(urlPatterns = "/auth")
-@SuppressWarnings("serial")
+// @WebServlet(urlPatterns = "/auth")
+@Controller
+@RequestMapping("/auth")
+//@SuppressWarnings("serial")
 @RequiredArgsConstructor
-public class AuthController extends HttpServlet implements ControllerHelper {
+public class AuthController {
     private final MemberService mService;
     private final AddressService aService;
 
     // TODO: 10-4. 다음의 키를 application.properties에 등록하고 @Value로 참조하세요.
-    private String keySgisServiceId = "서비스 id"; // 서비스 id
-    private String keySgisSecurity = "보안 key"; // 보안 key
+    @Value("${api.key_sgis_service_id}")
+    private String keySgisServiceId; // 서비스 id
+    @Value("${api.key_sgis_security}")
+    private String keySgisSecurity; // 보안 key
+    
+    //api.key_sgis_service_id=통계청_서비스_id
+    //api.key_sgis_security=통계청_보안_key
 
-    @Override
-    protected void service(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        String action = preProcessing(request, response);
-        System.out.println(action);
-        switch (action) {
-        case "member-detail" -> memberDetail(request, response);
-        case "member-list" -> memberList(request, response);
-        case "member-modify-form" -> memberModifyForm(request, response);
-        case "member-modify" -> memberModify(request, response);
-        case "member-delete" -> memberDelete(request, response);
-        case "address-insert" -> addressInsert(request, response);
-        case "address-delete" -> addressDelete(request, response);
-        default -> forward(request, response, "/error/404.jsp"); // 지정된 페이지로 forward
-        }
-    }
+//    @Override
+//    protected void service(HttpServletRequest request, HttpServletResponse response)
+//            throws ServletException, IOException {
+//        String action = preProcessing(request, response);
+//        System.out.println(action);
+//        switch (action) {
+//        case "member-detail" -> memberDetail(request, response);
+//        case "member-list" -> memberList(request, response);
+//        case "member-modify-form" -> memberModifyForm(request, response);
+//        case "member-modify" -> memberModify(request, response);
+//        case "member-delete" -> memberDelete(request, response);
+//        case "address-insert" -> addressInsert(request, response);
+//        case "address-delete" -> addressDelete(request, response);
+//        default -> forward(request, response, "/error/404.jsp"); // 지정된 페이지로 forward
+//        }
+//    }
 
-    private void memberDetail(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        String email = request.getParameter("email");
+    @GetMapping("/member-detail")
+    private String memberDetail(@RequestParam String email, Model model) {
+        //String email = request.getParameter("email");
         try {
-
             Member member = mService.selectDetail(email);
-            request.setAttribute("member", member);
-            request.setAttribute("key_sgis_service_id", keySgisServiceId);
-            request.setAttribute("key_sgis_security", keySgisSecurity);
+            //request.setAttribute
+            model.addAttribute("member", member);
+            model.addAttribute("key_sgis_service_id", keySgisServiceId);
+            model.addAttribute("key_sgis_security", keySgisSecurity);
         } catch (SQLException e) {
             e.printStackTrace();
-            request.setAttribute("alertMsg", e.getMessage());
+            model.addAttribute("alertMsg", e.getMessage());
         }
-        forward(request, response, "/member/member-detail.jsp");
+        //forward(request, response, "/member/member-detail.jsp");
+        return "member/member-detail";
     }
 
-    private void memberList(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    @GetMapping("/member-list")
+    private String memberList(@ModelAttribute SearchCondition condition, Model model) {
         Map<String, String> keyMap = Map.of("1", "name", "2", "email");
-        String key = request.getParameter("key");
-        if (key != null) {
-            key = keyMap.getOrDefault(key, "");
+        //String key = request.getParameter("key");
+        if (condition.getKey() != null) {
+            //key = keyMap.getOrDefault(key, "");
+            condition.setKey(keyMap.getOrDefault(condition.getKey(), ""));
         }
-        String word = request.getParameter("word");
-        int currentPage = Integer.parseInt(request.getParameter("currentPage"));
+        //String word = request.getParameter("word");
+        //int currentPage = Integer.parseInt(request.getParameter("currentPage"));
         try {
-            Page<Member> page = mService.search(new SearchCondition(key, word, currentPage));
-            request.setAttribute("page", page);
+            Page<Member> page = mService.search(condition);
+            model.addAttribute("page", page);
         } catch (SQLException e) {
             e.printStackTrace();
-            request.setAttribute("alertMsg", e.getMessage());
+            model.addAttribute("alertMsg", e.getMessage());
         }
-        forward(request, response, "/member/member-list.jsp");
+        return "member/member-list";
     }
 
-    private void memberModifyForm(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    @PostMapping("/member-modify-form")
+    private String memberModifyForm() {
         String email = request.getParameter("email");
         try {
             Member member = mService.selectDetail(email);

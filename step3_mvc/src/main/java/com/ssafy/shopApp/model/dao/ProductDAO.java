@@ -79,7 +79,7 @@ public class ProductDAO implements IProductDAO {
 
 	@Override
 	public List<ProductDTO> getAllProducts(Connection conn) throws SQLException {
-		String sql = "SELECT * FROM products";
+		String sql = "SELECT * FROM product";
 		List<ProductDTO> productList = new ArrayList<>();
 		try (PreparedStatement stmt = conn.prepareStatement(sql)) {
 			ResultSet rs = stmt.executeQuery();
