@@ -12,6 +12,15 @@
 		select name from userinfo where userid=#{userId} and password=#{password}
 	</select>
 	
+	<insert id="register">
+		INSERT INTO userinfo (userid, password, name, email) 
+		VALUES (#{userid}, #{password}, #{name}, #{email})
+	</insert>
+	
+	<select id="getUserById">
+		SELECT userid, password, name, email from userinfo where userid = #{userId}
+	</select>
+	
 </mapper>
 
 <!-- DTD: document type definition -->
