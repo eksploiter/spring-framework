@@ -14,7 +14,7 @@
         	</c:when>
         	<c:otherwise>
 		        <!-- 로그인 되었을 경우 -->
-		        <span class="navbar-text me-3 ms-3 text-white"><a href="${root}/user/myPage">${name}<a>님 로그인 중</span>    
+		        <span class="navbar-text me-3 ms-3 text-white"><a href="${root}/user/myPage">${name}</a>님 로그인 중</span>    
 		        <li class="nav-item"><a class="nav-link bg-success text-white" href="${root}/user/logout">로그아웃</a></li>		        
         	</c:otherwise>
         </c:choose>

@@ -8,14 +8,14 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 public class UserDTO {
-	private String userid;
+	private String userId;
 	private String password;
 	private String name;
 	private String email;
 	
 	public UserDTO(String userid, String password, String name, String email) {
 		this(password, name, email);
-		this.userid = userid;
+		this.userId = userid;
 	}
 	
 	@Builder

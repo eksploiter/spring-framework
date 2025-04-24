@@ -9,16 +9,16 @@
 <mapper namespace="com.ssafy.shopApp.model.dao.IUserDAO">
 	
 	<select id="login">
-		select name from userinfo where userid=#{userId} and password=#{password}
+		select name from userinfo where userId=#{userId} and password=#{password}
 	</select>
 	
 	<insert id="register">
-		INSERT INTO userinfo (userid, password, name, email) 
-		VALUES (#{userid}, #{password}, #{name}, #{email})
+		INSERT INTO userinfo (userId, password, name, email) 
+		VALUES (#{userId}, #{password}, #{name}, #{email})
 	</insert>
 	
 	<select id="getUserById">
-		SELECT userid, password, name, email from userinfo where userid = #{userId}
+		SELECT userId, password, name, email from userinfo where userId = #{userId}
 	</select>
 	
 </mapper>
