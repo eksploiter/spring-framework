@@ -64,6 +64,32 @@
 				</tfoot>
 			</table>
 		</form>
+		<div class="row mt-5">
+		<h4 class="text-secondary">연결된 사은품 목록</h4>
+		<c:choose>
+			<c:when test="${not empty product.gifts}">
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>사은품 번호</th>
+							<th>사은품 이름</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var="gift" items="${product.gifts}">
+							<tr>
+								<td>${gift.giftId}</td>
+								<td>${gift.name}</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</c:when>
+			<c:otherwise>
+				<p>연결된 사은품이 없습니다.</p>
+			</c:otherwise>
+		</c:choose>
+	</div>
 	</div>
 </body>
 </html>

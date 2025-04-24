@@ -1,17 +1,18 @@
 package com.ssafy.shopApp.model.dto;
 
+import java.util.ArrayList;
+import java.util.List;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-
-//@Getter
-//@Setter
-//@ToString
-//@Component
+import lombok.ToString;
 
 @Data
 @Builder
+@AllArgsConstructor
 @NoArgsConstructor
 public class ProductDTO {
 	private int productId;
@@ -21,27 +22,9 @@ public class ProductDTO {
 	private int price;
 	private int stockQuantity;
 	
-	@Builder
-	public ProductDTO(int productId, String name, String category, String brand, int price, int stockQuantity) {
-		this(name, category, brand, price, stockQuantity);
-		this.productId = productId;
-	}
+	@ToString.Exclude
+	@EqualsAndHashCode.Exclude
+	@Builder.Default
+	private List<GiftProductDTO> gifts = new ArrayList<>();
 	
-	@Builder
-	public ProductDTO(String name, String category, String brand, int price, int stockQuantity) {
-		super();
-		this.name = name;
-		this.category = category;
-		this.brand = brand;
-		this.price = price;
-		this.stockQuantity = stockQuantity;
-	}
-	
-//	@Builder
-//	public ProductDTO(int productId, String name, String category, String brand, int price, int stockQuantity) {
-//		this(name, category, brand, price, stockQuantity);
-//		this.productId = productId;
-//	}
-
-
 }

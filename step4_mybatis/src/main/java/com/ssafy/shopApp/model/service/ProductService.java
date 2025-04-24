@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.ssafy.shopApp.model.dao.IProductDAO;
+import com.ssafy.shopApp.model.dto.GiftProductDTO;
 import com.ssafy.shopApp.model.dto.ProductDTO;
 
 import lombok.RequiredArgsConstructor;
@@ -39,5 +40,9 @@ public class ProductService implements IProductService {
 	@Override
 	public List<ProductDTO> getAllProducts() throws Exception {
 		return productDAO.getAllProducts();
+	}
+	
+	public List<GiftProductDTO> getGiftsByProductId(int productId) {
+	    return productDAO.getGiftsByProductId(productId);
 	}
 }

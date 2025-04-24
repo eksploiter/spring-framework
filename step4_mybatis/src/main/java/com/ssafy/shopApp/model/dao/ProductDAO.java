@@ -4,10 +4,10 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
-
+import com.ssafy.shopApp.config.AppConfig;
 import com.ssafy.shopApp.model.dto.GiftProductDTO;
 import com.ssafy.shopApp.model.dto.ProductDTO;
-
+import com.ssafy.shopApp.model.service.GiftProductService;
 import lombok.RequiredArgsConstructor;
 
 @Repository
@@ -16,7 +16,7 @@ public class ProductDAO implements IProductDAO {
 
 	private final SqlSession sqlSession;
 	private static final String NS = "com.ssafy.shopApp.model.dao.IProductDAO.";
-	
+
 	@Override
 	public boolean insertProduct(ProductDTO product) {
 		return sqlSession.insert(NS + "insertProduct", product) > 0;
@@ -39,11 +39,13 @@ public class ProductDAO implements IProductDAO {
 
 	@Override
 	public List<ProductDTO> getAllProducts() {
-		return sqlSession.selectList(NS + "getAllProducts"); // 다중행 리스트이면 list
+		List<ProductDTO> dtos = sqlSession.selectList(NS + "getAllProducts");
+		dtos.stream().forEach(s -> System.out.println(s.toString()));
+		return dtos; // 다중행 리스트이면 list
 	}
 
 	@Override
-	public boolean insertGiftProduct(GiftProductDTO gift) {
-		return sqlSession.insert(NS + "insertGiftProduct", gift) > 0;
+	public List<GiftProductDTO> getGiftsByProductId(int productId) {
+		return sqlSession.selectList(NS + "getGiftsByProductId", productId);
 	}
 }

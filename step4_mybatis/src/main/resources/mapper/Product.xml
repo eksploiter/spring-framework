@@ -22,24 +22,81 @@
 		FROM products 
 	</sql>
 	
-	<select id="getProductById" parameterType="int" resultType="ProductDTO">
-		<include refid="basicProductSQL"></include>
-		WHERE product_id = #{productId}
-	</select>
+	<select id="getAllProducts" resultMap="productGiftMap">
+        SELECT
+        p.product_id,
+        p.name,
+        p.category,
+        p.brand,
+        p.price,
+        p.stock_quantity,
+        g.gift_id,
+        g.name AS
+        gift_name
+        FROM products p
+        LEFT OUTER JOIN gift_products g ON
+        p.product_id = g.product_id
+    </select>
+
+    <resultMap id="productGiftMap"
+        type="com.ssafy.shopApp.model.dto.ProductDTO">
+        <id property="productId" column="product_id" />
+        <result property="name" column="name" />
+        <result property="category" column="category" />
+        <result property="brand" column="brand" />
+        <result property="price" column="price" />
+        <result property="stockQuantity" column="stock_quantity" />
+
+        <collection property="gifts"
+            ofType="com.ssafy.shopApp.model.dto.GiftProductDTO"
+            notNullColumn="gift_id">
+            <id property="giftId" column="gift_id" />
+            <result property="name" column="gift_name" />
+            <result property="productId" column="product_id" />
+        </collection>
+
+    </resultMap>
+
+
+    <select id="getProductById" resultMap="productGiftMap">
+        SELECT
+        p.product_id,
+        p.name,
+        p.category,
+        p.brand,
+        p.price,
+        p.stock_quantity,
+        g.gift_id,
+        g.name AS
+        gift_name
+        FROM products p
+        LEFT OUTER JOIN gift_products g
+        ON p.product_id
+        = g.product_id AND g.gift_id IS NOT NULL
+        WHERE
+        p.product_id =
+        #{productId}
+    </select>
+
+
+
+
+    <insert id="insertGiftProduct">
+        INSERT INTO gift_products (name, product_id)
+        VALUES
+        (#{name}, #{productId})
+    </insert>
 	
-	<select id="getAllProducts" resultType="ProductDTO">
-		<include refid="basicProductSQL"></include>
-	</select>
-	
-	<insert id="insertProduct">
+	<insert id="insertProduct" useGeneratedKeys="true" keyColumn="product_id" keyProperty="productId"> 
 		INSERT INTO products (name, category, brand, price, stock_quantity) 
 		VALUES (#{name}, #{category}, #{brand}, #{price}, #{stockQuantity})
 	</insert>
 	
-	<insert id="insertGiftProduct">
-		INSERT INTO gift_products (name, product_id) 
-		VALUES (#{name}, #{productId})
-	</insert>
+	<select id="getGiftsByProductId" parameterType="int" resultType="GiftProductDTO">
+	    SELECT gift_id AS giftId, name, product_id AS productId
+	    FROM gift_products
+	    WHERE product_id = #{productId}
+	</select>
 	
 </mapper>
 

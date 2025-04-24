@@ -9,30 +9,28 @@
         <c:choose>
         	<c:when test="${empty userId}">
 		        <!-- 로그인 되지 않았을 경우 -->
-		        <li class="nav-item"><a class="nav-link"  href="${root}/user/loginForm">로그인</a>
+		        <li class="nav-item"><a class="nav-link" href="${root}/user/loginForm">로그인</a></li>
 		        <li class="nav-item"><a class="nav-link" href="${root}/user/registerForm">회원가입</a></li>
         	</c:when>
         	<c:otherwise>
 		        <!-- 로그인 되었을 경우 -->
-		        <span class="navbar-text me-3 ms-3 text-white"><a href="${root}/user/myPage">${name}</a>님 로그인 중</span>    
-		        <li class="nav-item"><a class="nav-link bg-success text-white" href="${root}/user/logout">로그아웃</a></li>		        
+		        <span class="navbar-text me-3 ms-3 text-white">
+		        	<a href="${root}/user/myPage">${name}</a>님 로그인 중
+		        </span>    
+		        <li class="nav-item">
+		        	<a class="nav-link bg-success text-white" href="${root}/user/logout">로그아웃</a>
+		        </li>
+
+		        <!-- 여기 추가: 로그인 시 사은품 목록 버튼 표시 -->
+		        <li class="nav-item">
+		        	<a class="nav-link bg-warning text-dark ms-2" href="${root}/gift/list">사은품 목록</a>
+		        </li>
         	</c:otherwise>
         </c:choose>
-        
-        <li class="nav-item"><a class="nav-link ms-2 bg-primary text-white" 
-        	href="${root}/main">
-        홈</a></li>  
 
+        <!-- 항상 보이는 홈 링크 -->
+        <li class="nav-item">
+        	<a class="nav-link ms-2 bg-primary text-white" href="${root}/main">홈</a>
+        </li>  
     </ul>
 </nav>
-
-
-
-
-
-
-
-
-
-
-

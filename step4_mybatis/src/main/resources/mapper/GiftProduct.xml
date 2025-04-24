@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.ssafy.shopApp.model.dao.IGiftProductDAO">
+
+    <delete id="deleteGiftProduct">
+        DELETE FROM gift_products WHERE gift_id = #{giftId}
+    </delete>
+
+    <update id="updateGiftProduct">
+        UPDATE gift_products 
+        SET name=#{name}, product_id=#{productId}
+        WHERE gift_id=#{giftId}
+    </update>
+
+    <sql id="basicGiftProductSQL">
+        SELECT gift_id as giftId, name, product_id as productId
+        FROM gift_products
+    </sql>
+
+    <select id="getGiftProductById" parameterType="int" resultType="GiftProductDTO">
+        <include refid="basicGiftProductSQL"/>
+        WHERE gift_id = #{giftId}
+    </select>
+
+    <select id="getAllGiftProducts" resultType="GiftProductDTO">
+        <include refid="basicGiftProductSQL"/>
+    </select>
+
+    <insert id="insertGiftProduct" useGeneratedKeys="true" keyColumn="gift_id" keyProperty="giftId"> 
+        INSERT INTO gift_products (name, product_id) 
+        VALUES (#{name}, #{productId})
+    </insert>
+
+</mapper>
+  

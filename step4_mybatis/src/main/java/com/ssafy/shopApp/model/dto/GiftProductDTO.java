@@ -6,11 +6,6 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
-//@Getter
-//@Setter
-//@ToString
-//@Component
-
 @Data
 @NoArgsConstructor
 @RequiredArgsConstructor

@@ -19,8 +19,8 @@
             <table class="table">
                 <tbody>
                     <tr>
-                        <th><label for="userid">아이디</label></th>
-                        <td><input type="text" name="userid" id="userid" required /></td>
+                        <th><label for="userId">아이디</label></th>
+                        <td><input type="text" name="userId" id="userId" required /></td>
                     </tr>
                     <tr>
                         <th><label for="password">비밀번호</label></th>

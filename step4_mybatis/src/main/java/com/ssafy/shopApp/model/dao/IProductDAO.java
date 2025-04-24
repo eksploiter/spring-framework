@@ -1,6 +1,5 @@
 package com.ssafy.shopApp.model.dao;
 
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -19,6 +18,6 @@ public interface IProductDAO {
 
 	List<ProductDTO> getAllProducts() throws SQLException;
 
-	boolean insertGiftProduct(GiftProductDTO gift) throws SQLException;
+	List<GiftProductDTO> getGiftsByProductId(int productId);
 
 }
