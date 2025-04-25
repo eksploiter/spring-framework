@@ -3125,3 +3125,6 @@ org.eclipse.core.runtime.CoreException: Could not resolve artifact org.springfra
 2025-04-25 15:01:48,981 [Worker-29: Building Workspace] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
 2025-04-25 15:01:48,986 [Worker-29: Building Workspace] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
 2025-04-25 15:01:48,991 [Worker-29: Building Workspace] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\SSAFY\spring\spring_testApp\src\test\resources
+2025-04-25 15:03:43,256 [Worker-29: Launching spring_testApp - SpringTestAppApplication] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-04-25 15:03:43,264 [Worker-29: Launching spring_testApp - SpringTestAppApplication] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-04-25 15:03:43,267 [Worker-29: Launching spring_testApp - SpringTestAppApplication] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\SSAFY\spring\spring_testApp\src\test\resources
