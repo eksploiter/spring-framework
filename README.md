@@ -28,7 +28,7 @@
 - **IDE** : SpringToolSuite4
 - **빌드 도구** : Maven
 - **데이터베이스** : MySQL
-- **라이브러리** : MyBatis
+- **라이브러리** : Lombok, MyBatis
 <br>
 
 ## 참고 자료
