@@ -15,6 +15,15 @@
 	    <version>1.5.18</version>
 	    <scope>compile</scope>
 	</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
+	<dependency>
+	    <groupId>org.junit.jupiter</groupId>
+	    <artifactId>junit-jupiter-api</artifactId>
+	    <version>5.12.2</version>
+	    <scope>test</scope>
+	    <!--스코프는 의존성을 가져왔는데 내가 어디에서까지 이 의존성을 사용할 수 있는가? 알려주는 것 -->
+	</dependency>
   </dependencies>
 
   <build>
