@@ -4,7 +4,15 @@ package com.ssafy.live.washer.bean;
 public class WasherUser {
 	private Washer washer;
 	
+	public WasherUser(Washer washer) {
+		this.washer = washer;
+	}
+	
 	public void userWasher(String cloths) {
 		washer.wash(cloths);
+	}
+	
+	public Washer getWasher() {
+		return this.washer;
 	}
 }
