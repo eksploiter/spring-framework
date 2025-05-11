@@ -69,3 +69,24 @@ log.info("info log");
 log.warn("warn log");
 log.error("error log");
 ```
+
+## 🧪 단위 테스트 (JUnit 5)
+
+JUnit 5 기반의 테스트 코드로 Calculator 클래스의 기능을 검증합니다.
+
+```xml
+<!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
+<dependency>
+  <groupId>org.junit.jupiter</groupId>
+  <artifactId>junit-jupiter-api</artifactId>
+  <version>5.12.2</version>
+  <scope>test</scope>
+</dependency>
+```
+✅ 사용한 JUnit 개념
+@BeforeEach : 테스트마다 객체를 새로 생성
+
+@Test, @DisplayName : 가독성 있는 테스트 작성
+
+Assertions.assertEquals() : 예상값과 결과값 비교
+
