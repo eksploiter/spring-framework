@@ -1,9 +1,12 @@
 # macOS
 .DS_Store
 
-# Java
-*.class
+# Logs
 *.log
+logFile.log
+
+# Compiled class files
+*.class
 
 # Maven
 target/
@@ -19,6 +22,3 @@ target/
 # IntelliJ
 .idea/
 *.iml
-
-# VSCode (optional)
-.vscode/
