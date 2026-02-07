@@ -6,7 +6,7 @@
 <body>
   <h1>Spring Framework</h1>
 
-  <h2>📌 개요</h2>
+  <h2>개요</h2>
   <p>
     이 프로젝트는 <strong>Spring Framework</strong> 수업의 일환으로 진행되었습니다.<br>
     <strong>Java</strong>와 <strong>Spring Framework</strong>를 주 언어 및 프레임워크로 사용하였으며,<br>
@@ -14,7 +14,7 @@
     프로젝트는 <strong>SpringToolSuite4</strong>를 통해 개발되었습니다.
   </p>
 
-  <h2>🔍 주요 학습 내용</h2>
+  <h2>주요 학습 내용</h2>
   <ul>
     <li><strong>Java</strong> 기반의 <strong>Spring Framework</strong>를 활용한 웹 개발</li>
     <li><strong>MVC 패턴</strong>을 이용한 웹 애플리케이션 구조 설계</li>
@@ -24,7 +24,7 @@
     <li><strong>Spring Security</strong>를 통한 인증 및 권한 관리</li>
   </ul>
 
-  <h2>🛠️ 프로젝트 기능</h2>
+  <h2>프로젝트 기능</h2>
   <ol>
     <li>사용자 관리 (로그인/회원가입)</li>
     <li>게시판 기능 (CRUD)</li>
@@ -32,7 +32,7 @@
     <li>JPA를 활용한 데이터베이스 연동 및 관리</li>
   </ol>
 
-  <h2>💻 개발 환경</h2>
+  <h2>개발 환경</h2>
   <ul>
     <li><strong>언어</strong> : Java</li>
     <li><strong>프레임워크</strong> : Spring Framework</li>
@@ -42,10 +42,10 @@
     <li><strong>라이브러리</strong> : Lombok, MyBatis</li>
   </ul>
 
-  <h2>📖 참고 자료</h2>
+  <h2>참고 자료</h2>
   <p>이 프로젝트는 수업 교재와 강의 자료를 기반으로 개발되었습니다.</p>
 
-  <h2>🔗 자주 사용하는 공식 문서 링크</h2>
+  <h2>자주 사용하는 공식 문서 링크</h2>
 
   <h3>Spring 관련 링크</h3>
   <ul>
